@@ -1,0 +1,37 @@
+# Minimal requirements for cloud deployment (no browser automation, voice, etc.)
+# Core web UI + API only
+
+# Web framework
+flask==3.0.3
+flask-basicauth==0.2.0
+python-socketio>=5.14.2
+uvicorn>=0.38.0
+starlette>=0.40.0
+wsproto>=1.22wsgi==.0
+a1.10.8
+
+# Core utilities
+python-dotenv==1.1.0
+pytz==2024.2
+simpleeval==1.0.3
+ansio==0.0.1
+markdown==3.7
+markdownify==1.1.0
+
+# Data processing
+pydantic==2.11.7
+pymupdf==1.25.3
+beautifulsoup4>=4.12.3
+lxml_html_clean==0.3.1
+
+# AI (lightweight)
+langchain-core==0.3.49
+langchain-community==0.3.19
+tiktoken==0.8.0
+
+# Misc
+nest-asyncio==1.6.0
+crontab==1.0.1
+psutil>=7.0.0
+pathspec>=0.12.1
+GitPython==3.1.43

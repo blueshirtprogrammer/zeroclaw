@@ -1,0 +1,19 @@
+# Nuvho AI OS Dockerfile
+# Builds on the official Agent Zero image with custom branding
+
+FROM agent0ai/agent-zero:latest
+
+# Set custom brand name
+ENV A0_BRAND_NAME="Nuvho AI OS"
+ENV A0_INACTIVITY_TIMEOUT=3600
+
+# Copy custom branding assets
+# COPY webui/public/*.svg /app/webui/public/
+# COPY webui/index.html /app/webui/index.html
+
+# Note: For full rebrand, run rebrand.sh before building
+# The script replaces all "Agent Zero" strings with your brand name
+
+EXPOSE 80 22 9000-9009
+
+CMD ["/exe/initialize.sh", "main"]

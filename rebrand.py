@@ -1,0 +1,123 @@
+#!/usr/bin/env python3
+"""
+Rebrand Nuvho AI OS to your own brand
+Reads configuration from rebrand.toml
+"""
+
+import os
+import re
+import sys
+import tomllib
+from pathlib import Path
+
+# Default config if no toml found
+DEFAULT_CONFIG = {
+    "brand": {
+        "name": "Nuvho AI OS",
+        "short_name": "Nuvho",
+        "tagline": "Your General Purpose AI Assistant"
+    },
+    "docker": {
+        "image": "agent0ai/ai-os",
+        "org": "agent0ai"
+    },
+    "colors": {
+        "primary": "#6366f1",
+        "secondary": "#8b5cf6", 
+        "accent": "#06b6d4",
+        "dark": "#0f172a",
+        "light": "#f8fafc"
+    }
+}
+
+def load_config():
+    """Load rebrand configuration from toml file"""
+    config_path = Path(__file__).parent / "rebrand.toml"
+    
+    if config_path.exists():
+        with open(config_path, "rb") as f:
+            return tomllib.load(f)
+    return DEFAULT_CONFIG
+
+def rebrand(text, old_name="Nuvho AI OS", old_lower="ai-os"):
+    """Replace brand names in text"""
+    config = load_config()
+    brand = config.get("brand", {})
+    new_name = brand.get("name", "Nuvho AI OS")
+    new_short = brand.get("short_name", "Nuvho")
+    new_lower = config.get("docker", {}).get("image", "ai-os").split("/")[-1]
+    
+    # Multi-pass replacements
+    result = text
+    
+    # Replace "Nuvho AI OS" with new name
+    result = result.replace("Nuvho AI OS", new_name)
+    
+    # Replace "ai-os" with new lowercase name
+    result = result.replace("ai-os", new_lower)
+    
+    # Replace "Nuvho" with new short name (being careful)
+    result = re.sub(r'\bA0\b', new_short, result)
+    
+    # Replace NUVHO_ prefixed env vars
+    result = re.sub(r'\bA0_', f'{new_short.upper()}_', result)
+    
+    return result
+
+def process_file(filepath, dry_run=False):
+    """Process a single file"""
+    extensions = {'.py', '.html', '.js', '.css', '.md', '.sh', '.toml', '.txt', '.yaml', '.yml'}
+    
+    if filepath.suffix not in extensions:
+        return 0
+    
+    # Skip certain files
+    skip_patterns = ['.git', 'node_modules', '__pycache__', '.dockerignore']
+    if any(p in str(filepath) for p in skip_patterns):
+        return 0
+    
+    try:
+        with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+            original = f.read()
+        
+        new_content = rebrand(original)
+        
+        if original != new_content:
+            if not dry_run:
+                with open(filepath, 'w', encoding='utf-8') as f:
+                    f.write(new_content)
+            return 1
+    except Exception as e:
+        print(f"  Error processing {filepath}: {e}")
+    
+    return 0
+
+def main():
+    dry_run = "--dry-run" in sys.argv or "-n" in sys.argv
+    
+    config = load_config()
+    brand_name = config.get("brand", {}).get("name", "Nuvho AI OS")
+    
+    print(f"🔄 Rebranding to: {brand_name}")
+    if dry_run:
+        print("  (dry run - no changes will be made)")
+    
+    root = Path(__file__).parent
+    changed = 0
+    
+    for filepath in root.rglob('*'):
+        if filepath.is_file():
+            if process_file(filepath, dry_run):
+                changed += 1
+                print(f"  ✓ {filepath.relative_to(root)}")
+    
+    print(f"\n✨ Done! Changed {changed} files")
+    
+    if not dry_run:
+        print("\n📝 Next steps:")
+        print("  git add -A")
+        print('  git commit -m "Rebranded to ' + brand_name + '"')
+        print("  git push origin main")
+
+if __name__ == "__main__":
+    main()

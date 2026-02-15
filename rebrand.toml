@@ -1,0 +1,28 @@
+# Nuvho AI OS - Rebrand Configuration
+# Edit this file to customize the branding
+
+[brand]
+name = "Nuvho AI OS"
+short_name = "Nuvho"
+tagline = "Your AI Operating System"
+
+[urls]
+website = "https://nuvho.ai"
+docs = "https://docs.nuvho.ai"
+github = "https://github.com/nuvho/ai-os"
+discord = "https://discord.gg/nuvho"
+
+[docker]
+image = "nuvho/ai-os"
+org = "nuvho"
+
+[colors]
+primary = "#6366f1"  # Indigo
+secondary = "#8b5cf6"  # Purple
+accent = "#06b6d4"  # Cyan
+dark = "#0f172a"  # Slate
+light = "#f8fafc"  # Slate 50
+
+[config]
+inactivity_timeout = 3600
+web_ui_port = 80
