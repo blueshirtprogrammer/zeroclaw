@@ -1,34 +1,21 @@
-# Render Blueprint for ZeroClaw
-# Save as render.yaml in your repo
+# ZeroClaw Render Configuration
+# Note: For Docker-based web services on Render, use the dashboard.
+# This file is a reference only - do NOT use "render blueprints apply" with Docker
 
-resources:
+# To deploy:
+# 1. Go to https://render.com
+# 2. New → Web Service
+# 3. Connect: blueshirtprogrammer/zeroclaw
+# 4. Environment: Docker
+# 5. Docker Image: agent0ai/agent-zero:latest
+# 6. Add env vars in dashboard
+
+services:
   - name: zeroclaw
     type: web
     region: oregon
     plan: free
-    
-    # Use the official Agent Zero image
-    image:
-      url: agent0ai/agent-zero:latest
-    
+    # Docker image is set in Render dashboard, not here
     envVars:
       - key: ZC_BRAND_NAME
         value: ZeroClaw
-      - key: ZC_INACTIVITY_TIMEOUT
-        value: "3600"
-      # Add your API keys in Render dashboard (don't commit them here)
-      # - key: OPENAI_API_KEY
-      #   sync: false
-      # - key: ANTHROPIC_API_KEY
-      #   sync: false
-
-    ports:
-      - containerPort: 80
-        protocol: TCP
-
-    # Free tier health check
-    healthCheck:
-      path: /
-      interval: 30
-      timeout: 10
-      retries: 3
