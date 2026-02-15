@@ -1,27 +1,34 @@
-# Nuvho AI OS - Rebrand Configuration
-# Edit this file to customize the branding
+# Agent ZERO V 2.2 - Rebrand Configuration
+# A strategic development alliance: CLAW + Agent Zero Original + Link Technologies AI OS
 
 [brand]
-name = "Nuvho AI OS"
-short_name = "Nuvho"
-tagline = "Your AI Operating System"
+name = "Agent ZERO V 2.2"
+short_name = "AZ-X"
+tagline = "Beast Mode from All Worlds"
+
+[credits]
+founder = "Joshua Goodlock"
+lead_developer = "Joshua Goodlock"
+original_team_size = 36
+strategic_alliance = "Link Technologies AI OS"
+based_on = ["CLAW", "Agent Zero Original"]
 
 [urls]
-website = "https://nuvho.ai"
-docs = "https://docs.nuvho.ai"
-github = "https://github.com/nuvho/ai-os"
-discord = "https://discord.gg/nuvho"
+website = "https://agentzerox.ai"
+docs = "https://docs.agentzerox.ai"
+github = "https://github.com/blueshirtprogrammer/agent-zero-x"
+discord = "https://discord.gg/agentzerox"
 
 [docker]
-image = "nuvho/ai-os"
+image = "blueshirtprogrammer/agent-zero-x"
 org = "blueshirtprogrammer"
 
 [colors]
-primary = "#6366f1"  # Indigo
-secondary = "#8b5cf6"  # Purple
-accent = "#06b6d4"  # Cyan
-dark = "#0f172a"  # Slate
-light = "#f8fafc"  # Slate 50
+primary = "#ff6b35"  # Beast Orange
+secondary = "#f7c531"  # Gold
+accent = "#00d4ff"  # Electric Blue
+dark = "#0a0a0a"  # Black
+light = "#ffffff"  # White
 
 [config]
 inactivity_timeout = 3600

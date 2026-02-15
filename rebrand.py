@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Rebrand Nuvho AI OS to your own brand
+Rebrand Agent ZERO V 2.2 to your own brand
 Reads configuration from rebrand.toml
 """
 
@@ -13,12 +13,12 @@ from pathlib import Path
 # Default config if no toml found
 DEFAULT_CONFIG = {
     "brand": {
-        "name": "Nuvho AI OS",
+        "name": "Agent ZERO V 2.2",
         "short_name": "Nuvho",
         "tagline": "Your General Purpose AI Assistant"
     },
     "docker": {
-        "image": "agent0ai/ai-os",
+        "image": "agent0ai/agent-zero-x",
         "org": "agent0ai"
     },
     "colors": {
@@ -39,22 +39,22 @@ def load_config():
             return tomllib.load(f)
     return DEFAULT_CONFIG
 
-def rebrand(text, old_name="Nuvho AI OS", old_lower="ai-os"):
+def rebrand(text, old_name="Agent ZERO V 2.2", old_lower="agent-zero-x"):
     """Replace brand names in text"""
     config = load_config()
     brand = config.get("brand", {})
-    new_name = brand.get("name", "Nuvho AI OS")
+    new_name = brand.get("name", "Agent ZERO V 2.2")
     new_short = brand.get("short_name", "Nuvho")
-    new_lower = config.get("docker", {}).get("image", "ai-os").split("/")[-1]
+    new_lower = config.get("docker", {}).get("image", "agent-zero-x").split("/")[-1]
     
     # Multi-pass replacements
     result = text
     
-    # Replace "Nuvho AI OS" with new name
-    result = result.replace("Nuvho AI OS", new_name)
+    # Replace "Agent ZERO V 2.2" with new name
+    result = result.replace("Agent ZERO V 2.2", new_name)
     
-    # Replace "ai-os" with new lowercase name
-    result = result.replace("ai-os", new_lower)
+    # Replace "agent-zero-x" with new lowercase name
+    result = result.replace("agent-zero-x", new_lower)
     
     # Replace "Nuvho" with new short name (being careful)
     result = re.sub(r'\bA0\b', new_short, result)
@@ -96,7 +96,7 @@ def main():
     dry_run = "--dry-run" in sys.argv or "-n" in sys.argv
     
     config = load_config()
-    brand_name = config.get("brand", {}).get("name", "Nuvho AI OS")
+    brand_name = config.get("brand", {}).get("name", "Agent ZERO V 2.2")
     
     print(f"🔄 Rebranding to: {brand_name}")
     if dry_run:

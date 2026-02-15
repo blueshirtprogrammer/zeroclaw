@@ -1,6 +1,6 @@
-# Agent Zero Installation Guide
+# Agent ZERO V 2.2 Installation Guide
 
-> **Purpose:** Step-by-step guide for deploying Agent Zero instances on VPS/dedicated servers  
+> **Purpose:** Step-by-step guide for deploying Agent ZERO V 2.2 instances on VPS/dedicated servers  
 > **Author:** Auto-generated from deployment experience  
 > **Last Updated:** December 21 2025  
 > **Compatibility:** Docker-capable Linux servers (AlmaLinux, CentOS, Rocky, Ubuntu, Debian)
@@ -11,7 +11,7 @@
 
 1. [Prerequisites](#prerequisites)
 2. [Docker Installation](#docker-installation)
-3. [Agent Zero Container Deployment](#agent-zero-container-deployment)
+3. [Agent ZERO V 2.2 Container Deployment](#agent-zero-x-container-deployment)
 4. [Apache Reverse Proxy Configuration](#apache-reverse-proxy-configuration)
 5. [SSL/TLS Configuration](#ssltls-configuration)
 6. [Authentication Setup](#authentication-setup)
@@ -118,34 +118,34 @@ docker run hello-world
 
 ---
 
-## Agent Zero Container Deployment
+## Agent ZERO V 2.2 Container Deployment
 
 ### Step 1: Create Directory Structure
 
 ```bash
 # Choose your installation path
-A0_NAME="a0-instance"  # Change this to your instance name
-A0_PATH="/opt/${A0_NAME}"
+NUVHO_NAME="a0-instance"  # Change this to your instance name
+NUVHO_PATH="/opt/${NUVHO_NAME}"
 
 # Create directories
-mkdir -p ${A0_PATH}
-mkdir -p ${A0_PATH}/work_dir
-mkdir -p ${A0_PATH}/memory
-mkdir -p ${A0_PATH}/logs
+mkdir -p ${NUVHO_PATH}
+mkdir -p ${NUVHO_PATH}/work_dir
+mkdir -p ${NUVHO_PATH}/memory
+mkdir -p ${NUVHO_PATH}/logs
 ```
 
 ### Step 2: Create Environment Configuration
 
 ```bash
 # Create .env file with authentication
-cat > ${A0_PATH}/.env << 'EOF'
-# Agent Zero Configuration
+cat > ${NUVHO_PATH}/.env << 'EOF'
+# Agent ZERO V 2.2 Configuration
 # Authentication (REQUIRED for web access)
 AUTH_LOGIN=your_username_here
 AUTH_PASSWORD=your_secure_password_here
 
 # Optional: Additional configuration
-# See Agent Zero documentation for all options
+# See Agent ZERO V 2.2 documentation for all options
 EOF
 ```
 
@@ -165,28 +165,28 @@ EOF
 
 ```bash
 # Set variables
-A0_NAME="a0-instance"
-A0_PATH="/opt/${A0_NAME}"
-A0_PORT="50080"
+NUVHO_NAME="a0-instance"
+NUVHO_PATH="/opt/${NUVHO_NAME}"
+NUVHO_PORT="50080"
 
 # Pull latest image
-docker pull agent0ai/agent-zero:latest
+docker pull agent0ai/agent-zero-x:latest
 
 # Run container
-docker run -d   --name ${A0_NAME}   --restart unless-stopped   -p ${A0_PORT}:80   -v ${A0_PATH}/.env:/a0/.env   -v ${A0_PATH}/usr:/a0/usr   agent0ai/agent-zero:latest
+docker run -d   --name ${NUVHO_NAME}   --restart unless-stopped   -p ${NUVHO_PORT}:80   -v ${NUVHO_PATH}/.env:/a0/.env   -v ${NUVHO_PATH}/usr:/a0/usr   agent0ai/agent-zero-x:latest
 ```
 
 ### Step 5: Verify Container
 
 ```bash
 # Check container is running
-docker ps | grep ${A0_NAME}
+docker ps | grep ${NUVHO_NAME}
 
 # Check logs
-docker logs ${A0_NAME}
+docker logs ${NUVHO_NAME}
 
 # Test local access
-curl -I http://127.0.0.1:${A0_PORT}/
+curl -I http://127.0.0.1:${NUVHO_PORT}/
 ```
 
 Expected response: `HTTP/1.1 302 FOUND` with `Location: /login` (if auth enabled)
@@ -211,7 +211,7 @@ httpd -M | grep -E "proxy|rewrite|ssl"
 Create `/etc/apache2/sites-available/a0-instance.conf`:
 
 ```apache
-# Agent Zero Reverse Proxy Configuration
+# Agent ZERO V 2.2 Reverse Proxy Configuration
 # Instance: a0-instance
 # Domain: a0.example.com
 
@@ -269,7 +269,7 @@ systemctl reload apache2
 Edit `/etc/httpd/conf/extra/httpd-includes.conf`:
 
 ```apache
-# Agent Zero Proxy Configuration
+# Agent ZERO V 2.2 Proxy Configuration
 # Instance: a0-instance
 # Domain: a0.example.com
 # Note: Use specific IP, not wildcards, for DirectAdmin compatibility
@@ -394,7 +394,7 @@ chmod 600 /etc/ssl/a0/*
 
 ## Authentication Setup
 
-### Understanding A0 Authentication Variables
+### Understanding Nuvho Authentication Variables
 
 | Variable | Purpose | Example |
 |----------|---------|--------|
@@ -495,7 +495,7 @@ curl -I https://a0.example.com/
 
 # 7. Test login page loads
 curl -s https://a0.example.com/login | grep -i "<title>"
-# Expected: <title>Login - Agent Zero</title>
+# Expected: <title>Login - Agent ZERO V 2.2</title>
 ```
 
 ### WebSocket Verification
@@ -627,18 +627,18 @@ docker exec a0-instance cat /a0/.env
 
 ## Maintenance & Updates
 
-### Updating Agent Zero
+### Updating Agent ZERO V 2.2
 
 ```bash
 # Pull latest image
-docker pull agent0ai/agent-zero:latest
+docker pull agent0ai/agent-zero-x:latest
 
 # Stop and remove old container (data persists in volumes)
 docker stop a0-instance
 docker rm a0-instance
 
 # Recreate with same settings
-docker run -d   --name a0-instance   --restart unless-stopped   -p 50080:80   -v /opt/a0-instance/.env:/a0/.env   -v /opt/a0-instance/usr:/a0/usr   -v /opt/agent-zero:latest
+docker run -d   --name a0-instance   --restart unless-stopped   -p 50080:80   -v /opt/a0-instance/.env:/a0/.env   -v /opt/a0-instance/usr:/a0/usr   -v /opt/agent-zero-x:latest
 ```
 
 ### Backup Strategy
@@ -717,16 +717,16 @@ curl -I https://your-domain.com/login
 
 | Port | Purpose |
 |------|---------|
-| 50080 | First A0 instance |
-| 50081 | Second A0 instance |
-| 50082 | Third A0 instance |
+| 50080 | First Nuvho instance |
+| 50081 | Second Nuvho instance |
+| 50082 | Third Nuvho instance |
 | 80 | HTTP (redirect to HTTPS) |
 | 443 | HTTPS (main access) |
 
 ### .env Template
 
 ```bash
-# Agent Zero Configuration Template
+# Agent ZERO V 2.2 Configuration Template
 # Copy and customize for each instance
 
 # Authentication (REQUIRED for production)
@@ -734,14 +734,14 @@ AUTH_LOGIN=your_username
 AUTH_PASSWORD=your_secure_password
 
 # Optional: Additional settings
-# Refer to Agent Zero documentation for all options
+# Refer to Agent ZERO V 2.2 documentation for all options
 ```
 
 ---
 
 ## Appendix: Multi-Instance Setup
 
-For running multiple A0 instances on the same server:
+For running multiple Nuvho instances on the same server:
 
 ```bash
 # Instance 1: a0-primary on port 50080
@@ -766,6 +766,6 @@ Each instance needs:
 
 ---
 
-*This guide comes from successful Agent Zero deployments across DirectAdmin and standard Linux environments.*
+*This guide comes from successful Agent ZERO V 2.2 deployments across DirectAdmin and standard Linux environments.*
 
-Contributed by @hurtdidit in the A0 Community.
+Contributed by @hurtdidit in the Nuvho Community.

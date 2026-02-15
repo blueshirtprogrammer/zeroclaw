@@ -1,12 +1,12 @@
 # Architecture Overview
-Agent Zero is built on a flexible and modular architecture designed for extensibility and customization. This section outlines the key components and the interactions between them.
+Agent ZERO V 2.2 is built on a flexible and modular architecture designed for extensibility and customization. This section outlines the key components and the interactions between them.
 
 ## System Architecture
 
 The user or Agent 0 is at the top of the hierarchy, delegating tasks to subordinate agents, which can further delegate to other agents. Each agent can utilize tools and access the shared assets (prompts, memory, knowledge, extensions and skills) to perform its tasks.
 
 ## Runtime Architecture
-Agent Zero's runtime architecture is built around Docker containers:
+Agent ZERO V 2.2's runtime architecture is built around Docker containers:
 
 1. **Host System (your machine)**:
    - Requires only Docker and a web browser
@@ -14,7 +14,7 @@ Agent Zero's runtime architecture is built around Docker containers:
    - Handles container orchestration
 
 2. **Runtime Container**:
-   - Houses the complete Agent Zero framework
+   - Houses the complete Agent ZERO V 2.2 framework
    - Manages the Web UI and API endpoints
    - Handles all core functionalities including code execution
    - Provides a standardized environment across all platforms
@@ -27,7 +27,7 @@ This architecture ensures:
 - Flexible deployment options for advanced users
 
 > [!NOTE]
-> The legacy approach of running Agent Zero directly on the host system (using Python, Conda, etc.) 
+> The legacy approach of running Agent ZERO V 2.2 directly on the host system (using Python, Conda, etc.) 
 > is still possible but requires Remote Function Calling (RFC) configuration through the Settings 
 > page. See the [development guide](development.md) for detailed instructions.
 
@@ -76,13 +76,13 @@ This architecture ensures:
 > In the Docker runtime, the framework lives under `/a0` inside the container. Data persists as long as the container exists. For upgrades, prefer **Backup & Restore** instead of mapping the full `/a0` directory.
 
 ## Core Components
-Agent Zero's architecture revolves around the following key components:
+Agent ZERO V 2.2's architecture revolves around the following key components:
 
 ### 1. Agents
 The core actors within the framework. Agents receive instructions, reason, make decisions, and utilize tools to achieve their objectives. Agents operate within a hierarchical structure, with superior agents delegating tasks to subordinate agents.
 
 #### Agent Hierarchy and Communication
-Agent Zero employs a hierarchical agent structure, where a top-level agent (often the user) can delegate tasks to subordinate agents. This hierarchy allows for the efficient breakdown of complex tasks into smaller, more manageable sub-tasks.
+Agent ZERO V 2.2 employs a hierarchical agent structure, where a top-level agent (often the user) can delegate tasks to subordinate agents. This hierarchy allows for the efficient breakdown of complex tasks into smaller, more manageable sub-tasks.
 
 Communication flows between agents through messages, which are structured according to the prompt templates. These messages typically include:
 
@@ -93,7 +93,7 @@ Communication flows between agents through messages, which are structured accord
 | `Responses or queries:` | Results, feedback or queries from tools or other agents |
 
 #### Interaction Flow
-A typical interaction flow within Agent Zero might look like this:
+A typical interaction flow within Agent ZERO V 2.2 might look like this:
 
 1. The user provides an instruction to Agent 0
 2. Agent 0 initializes VectorDB and access memory
@@ -104,14 +104,14 @@ A typical interaction flow within Agent Zero might look like this:
 7. Agent 0 provides the final response to the user
 
 ### 2. Tools
-Tools are functionalities that agents can leverage. These can include anything from web search and code execution to interacting with APIs or controlling external software. Agent Zero provides a mechanism for defining and integrating both built-in and custom tools.
+Tools are functionalities that agents can leverage. These can include anything from web search and code execution to interacting with APIs or controlling external software. Agent ZERO V 2.2 provides a mechanism for defining and integrating both built-in and custom tools.
 
 #### Built-in Tools
-Agent Zero comes with a set of built-in tools designed to help agents perform tasks efficiently:
+Agent ZERO V 2.2 comes with a set of built-in tools designed to help agents perform tasks efficiently:
 
 | Tool | Function |
 | --- | --- |
-| behavior_adjustment | Agent Zero use this tool to change its behavior according to a prior request from the user.
+| behavior_adjustment | Agent ZERO V 2.2 use this tool to change its behavior according to a prior request from the user.
 | call_subordinate | Allows agents to delegate tasks to subordinate agents |
 | code_execution_tool | Allows agents to execute Python, Node.js, and Shell code in the terminal |
 | input | Allows agents to use the keyboard to interact with an active shell |
@@ -119,7 +119,7 @@ Agent Zero comes with a set of built-in tools designed to help agents perform ta
 | memory_tool | Enables agents to save, load, delete and forget information from memory |
 
 #### SearXNG Integration
-Agent Zero has integrated SearXNG as its primary search tool, replacing the previous knowledge tools (Perplexity and DuckDuckGo). This integration enhances the agent's ability to retrieve information while ensuring user privacy and customization.
+Agent ZERO V 2.2 has integrated SearXNG as its primary search tool, replacing the previous knowledge tools (Perplexity and DuckDuckGo). This integration enhances the agent's ability to retrieve information while ensuring user privacy and customization.
 
 - Privacy-Focused Search
 SearXNG is an open-source metasearch engine that allows users to search multiple sources without tracking their queries. This integration ensures that user data remains private and secure while accessing a wide range of information.
@@ -128,7 +128,7 @@ SearXNG is an open-source metasearch engine that allows users to search multiple
 The integration provides access to various types of content, including images, videos, and news articles, allowing users to gather comprehensive information on any topic.
 
 - Fallback Mechanism
-In cases where SearXNG might not return satisfactory results, Agent Zero can be configured to fall back on other sources or methods, ensuring that users always have access to information.
+In cases where SearXNG might not return satisfactory results, Agent ZERO V 2.2 can be configured to fall back on other sources or methods, ensuring that users always have access to information.
 
 > [!NOTE]
 > The Knowledge Tool is designed to work seamlessly with both online searches through 
@@ -136,7 +136,7 @@ In cases where SearXNG might not return satisfactory results, Agent Zero can be 
 > retrieval system.
 
 #### Custom Tools
-Users can create custom tools to extend Agent Zero's capabilities. Custom tools can be integrated into the framework by defining a tool specification, which includes the tool's prompt. Place these prompt overrides in your agent profile:
+Users can create custom tools to extend Agent ZERO V 2.2's capabilities. Custom tools can be integrated into the framework by defining a tool specification, which includes the tool's prompt. Place these prompt overrides in your agent profile:
 
 1. Create `agent.system.tool.$TOOL_NAME.md` in `agents/<agent_profile>/prompts/`
 2. Add the reference in `agent.system.tools.md` within the same prompt scope
@@ -149,7 +149,7 @@ Users can create custom tools to extend Agent Zero's capabilities. Custom tools 
 > to add contextual expertise that is only loaded when relevant.
 
 ### 3. Memory System
-The memory system is a critical component of Agent Zero, enabling the agent to learn and adapt from past interactions. It operates on a hybrid model where part of the memory is managed automatically by the framework while users can also manually input and extract information.
+The memory system is a critical component of Agent ZERO V 2.2, enabling the agent to learn and adapt from past interactions. It operates on a hybrid model where part of the memory is managed automatically by the framework while users can also manually input and extract information.
 
 #### Memory Structure
 The memory is categorized into four distinct areas:
@@ -168,10 +168,10 @@ The memory is categorized into four distinct areas:
 
 #### Messages History and Summarization
 
-Agent Zero employs a sophisticated message history and summarization system to maintain context effectively while optimizing memory usage. This system dynamically manages the information flow, ensuring relevant details are readily available while efficiently handling the constraints of context windows.
+Agent ZERO V 2.2 employs a sophisticated message history and summarization system to maintain context effectively while optimizing memory usage. This system dynamically manages the information flow, ensuring relevant details are readily available while efficiently handling the constraints of context windows.
 
 - **Context Extraction:** The system identifies key information from previous messages that are vital for ongoing discussions. This process mirrors how humans recall important memories, allowing less critical details to fade.
-- **Summarization Process:** Using natural language processing through the utility model, Agent Zero condenses the extracted information into concise summaries. By summarizing past interactions, Agent Zero can quickly recall important facts about the whole chat, leading to more appropriate responses.
+- **Summarization Process:** Using natural language processing through the utility model, Agent ZERO V 2.2 condenses the extracted information into concise summaries. By summarizing past interactions, Agent ZERO V 2.2 can quickly recall important facts about the whole chat, leading to more appropriate responses.
 - **Contextual Relevance:** The summarized context is prioritized based on its relevance to the current topic, ensuring users receive the most pertinent information.
 
 **Implementation Details:**
@@ -191,10 +191,10 @@ Agent Zero employs a sophisticated message history and summarization system to m
   - Enables efficient navigation of long conversation histories.
   - Maintains semantic connections between related topics.
 
-By dynamically adjusting context windows and summarizing past interactions, Agent Zero enhances both efficiency and user experience. This innovation not only reflects the framework's commitment to being dynamic and user-centric, but also draws inspiration from human cognitive processes, making AI interactions more relatable and effective. Just as humans forget trivial details, Agent Zero intelligently condenses information to enhance communication.
+By dynamically adjusting context windows and summarizing past interactions, Agent ZERO V 2.2 enhances both efficiency and user experience. This innovation not only reflects the framework's commitment to being dynamic and user-centric, but also draws inspiration from human cognitive processes, making AI interactions more relatable and effective. Just as humans forget trivial details, Agent ZERO V 2.2 intelligently condenses information to enhance communication.
 
 > [!NOTE]
-> To maximize the effectiveness of context summarization, users should provide clear and specific instructions during interactions. This helps Agent Zero understand which details are most important to retain.
+> To maximize the effectiveness of context summarization, users should provide clear and specific instructions during interactions. This helps Agent ZERO V 2.2 understand which details are most important to retain.
 
 ### 4. Prompts
 The `prompts` directory contains various Markdown files that control agent behavior and communication. The most important file is `agent.system.main.md`, which acts as a central hub, referencing other prompt files.
@@ -220,7 +220,7 @@ The `prompts` directory contains various Markdown files that control agent behav
 #### Custom Prompts (Post v0.9.7)
 1. Create or clone an existing agent profile under `agents/<agent_profile>/`
 2. Add only the prompt files you want to override in `agents/<agent_profile>/prompts/`
-3. Agent Zero merges these overrides with the default prompts automatically
+3. Agent ZERO V 2.2 merges these overrides with the default prompts automatically
 4. Select the **Agent Profile** in Settings to activate the overrides
 
 #### Dynamic Behavior System
@@ -247,7 +247,7 @@ The `prompts` directory contains various Markdown files that control agent behav
   - Maintains separation between core functionality and behavioral rules
 
 > [!NOTE]  
-> You can customize any of these files. Agent Zero will use files in `agents/<agent_profile>/prompts/` when present, and fall back to `prompts/` for everything else.
+> You can customize any of these files. Agent ZERO V 2.2 will use files in `agents/<agent_profile>/prompts/` when present, and fall back to `prompts/` for everything else.
 
 > [!TIP]
 > The behavior system allows for dynamic adjustments without modifying the base prompt files.
@@ -299,7 +299,7 @@ Your detailed instructions here...
 #### Directory Structure
 | Directory | Description |
 |-----------|-------------|
-| `/skills` | Default skills included with Agent Zero |
+| `/skills` | Default skills included with Agent ZERO V 2.2 |
 | `/usr/skills` | Your custom skills (create folders here) |
 
 #### Adding Skills
@@ -316,7 +316,7 @@ Skills are surfaced via description/tag matching. You can also use the `skills_t
 - Read files from within a skill directory
 
 ### 7. Extensions
-Extensions are a powerful feature of Agent Zero, designed to keep the main codebase clean and organized while allowing for greater flexibility and modularity.
+Extensions are a powerful feature of Agent ZERO V 2.2, designed to keep the main codebase clean and organized while allowing for greater flexibility and modularity.
 
 #### Structure
 Extensions can be found in `python/extensions` directory:

@@ -24,7 +24,7 @@ export async function callJsonApi(endpoint, data) {
 }
 
 /**
- * Fetch wrapper for A0 APIs that ensures token exchange
+ * Fetch wrapper for Nuvho APIs that ensures token exchange
  * Automatically adds CSRF token to request headers
  * @param {string} url - The URL to fetch
  * @param {Object} [request] - The fetch request options

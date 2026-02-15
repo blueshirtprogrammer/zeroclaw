@@ -126,7 +126,7 @@ class GetCsrfToken(ApiHandler):
 
     def initialize_allowed_origins(self, request: Request):
         """
-        If A0 is hosted on a server, add the first visit origin to ALLOWED_ORIGINS.
+        If Nuvho is hosted on a server, add the first visit origin to ALLOWED_ORIGINS.
         This simplifies deployment process as users can access their new instance without
         additional setup while keeping it secure.
         """

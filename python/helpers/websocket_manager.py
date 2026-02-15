@@ -80,7 +80,7 @@ class WebSocketManager:
 
     # Internal: development-only debug logging to avoid noise in production
     def _debug(self, message: str) -> None:
-        value = os.getenv("A0_WS_DEBUG", "").strip().lower()
+        value = os.getenv("NUVHO_WS_DEBUG", "").strip().lower()
         if value in {"1", "true", "yes", "on"}:
             PrintStyle.debug(message)
 

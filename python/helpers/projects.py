@@ -89,7 +89,7 @@ def create_project(name: str, data: BasicProjectData):
 
 
 def clone_git_project(name: str, git_url: str, git_token: str, data: BasicProjectData):
-    """Clone a git repository as a new A0 project. Token is used only for cloning via http header."""
+    """Clone a git repository as a new Nuvho project. Token is used only for cloning via http header."""
     from python.helpers import git
     
     abs_path = files.create_dir_safe(

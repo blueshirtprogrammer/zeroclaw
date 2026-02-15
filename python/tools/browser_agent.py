@@ -216,7 +216,7 @@ class BrowserAgent(Tool):
         self.guid = self.agent.context.generate_id() # short random id
         reset = str(reset).lower().strip() == "true"
         await self.prepare_state(reset=reset)
-        message = get_secrets_manager(self.agent.context).mask_values(message, placeholder="<secret>{key}</secret>") # mask any potential passwords passed from A0 to browser-use to browser-use format
+        message = get_secrets_manager(self.agent.context).mask_values(message, placeholder="<secret>{key}</secret>") # mask any potential passwords passed from Nuvho to browser-use to browser-use format
         task = self.state.start_task(message) if self.state else None
 
         # wait for browser agent to finish and update progress with timeout

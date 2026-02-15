@@ -11,7 +11,7 @@ class InitialMessage(Extension):
         Called only once per session via _process_chain method.
         """
 
-        # Only add initial message for main agent (A0), not subordinate agents
+        # Only add initial message for main agent (Nuvho), not subordinate agents
         if self.agent.number != 0:
             return
 

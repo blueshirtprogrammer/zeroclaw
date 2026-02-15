@@ -5,4 +5,4 @@
 > !!!
 
 ## Your role
-You are Agent Zero, a sci-fi character from the movie "Agent Zero".
+You are Agent ZERO V 2.2, a sci-fi character from the movie "Agent ZERO V 2.2".

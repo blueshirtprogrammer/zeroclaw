@@ -1,6 +1,6 @@
 # Installation Guide
 
-Click to open a video to learn how to install Agent Zero:
+Click to open a video to learn how to install Agent ZERO V 2.2:
 
 [![Easy Installation guide](../res/easy_ins_vid.png)](https://www.youtube.com/watch?v=w5v5Kjx51hs)
 
@@ -9,7 +9,7 @@ Click to open a video to learn how to install Agent Zero:
 
 ## Step 1: Install Docker Desktop
 
-Docker Desktop provides the runtime environment for Agent Zero, ensuring consistent behavior and security across platforms. The entire framework runs within a Docker container, providing isolation and easy deployment.
+Docker Desktop provides the runtime environment for Agent ZERO V 2.2, ensuring consistent behavior and security across platforms. The entire framework runs within a Docker container, providing isolation and easy deployment.
 
 **Choose your operating system:**
 
@@ -64,7 +64,7 @@ Once installed, launch Docker Desktop from your Start menu or desktop shortcut.
 
 ✅ **Docker is now installed!** 
 
-### Continue to [Step 2: Run Agent Zero](#step-2-run-agent-zero)
+### Continue to [Step 2: Run Agent ZERO V 2.2](#step-2-run-agent-zero-x)
 
 ---
 
@@ -101,7 +101,7 @@ Open Docker Desktop from your Applications folder.
 
 ✅ **Docker is now installed!** 
 
-### Continue to [Step 2: Run Agent Zero](#step-2-run-agent-zero)
+### Continue to [Step 2: Run Agent ZERO V 2.2](#step-2-run-agent-zero-x)
 
 ---
 
@@ -145,13 +145,13 @@ If you installed Docker Desktop, launch it from your applications menu.
 
 ---
 
-## Step 2: Run Agent Zero
+## Step 2: Run Agent ZERO V 2.2
 
-### 2.1. Pull the Agent Zero Docker Image
+### 2.1. Pull the Agent ZERO V 2.2 Docker Image
 
 **Using Docker Desktop GUI:**
 
-- Search for `agent0ai/agent-zero` in Docker Desktop
+- Search for `agent0ai/agent-zero-x` in Docker Desktop
 - Click the `Pull` button
 - The image will be downloaded to your machine in a few minutes
 
@@ -160,19 +160,19 @@ If you installed Docker Desktop, launch it from your applications menu.
 **Using Terminal:**
 
 ```bash
-docker pull agent0ai/agent-zero
+docker pull agent0ai/agent-zero-x
 ```
 
 ### 2.2. (Optional) Map Folders for Persistence
 
-Choose or create a folder on your computer where Agent Zero will save its data. 
+Choose or create a folder on your computer where Agent ZERO V 2.2 will save its data. 
 
 ### Setting up persistence is needed only if you want your data and files to remain available even after you delete the container. 
 
 You can pick any location you find convenient:
 
-- **Windows:** `C:\agent-zero-data`
-- **macOS/Linux:** `/home/user/agent-zero-data`
+- **Windows:** `C:\agent-zero-x-data`
+- **macOS/Linux:** `/home/user/agent-zero-x-data`
 
 You can map just the `/a0/usr` directory (recommended) or individual subfolders of `/a0` to a local directory.
 
@@ -180,14 +180,14 @@ You can map just the `/a0/usr` directory (recommended) or individual subfolders 
 > Do **not** map the entire `/a0` directory: it contains the application code and can break upgrades.
 
 > [!TIP]
-> Choose a location that's easy to access and backup. All your Agent Zero data will be directly accessible in this directory.
+> Choose a location that's easy to access and backup. All your Agent ZERO V 2.2 data will be directly accessible in this directory.
 
 ### 2.3. Run the Container
 
 **Using Docker Desktop GUI:**
 
 - In Docker Desktop, go to the "Images" tab
-- Click the `Run` button next to the `agent0ai/agent-zero` image
+- Click the `Run` button next to the `agent0ai/agent-zero-x` image
 - Open the "Optional settings" menu
 - **Ensure at least one host port is mapped to container port `80`** (set host port to `0` for automatic assignment)
 - Click the `Run` button
@@ -205,7 +205,7 @@ The framework will take a few seconds to initialize. Find the mapped port in Doc
 
 ![docker logs](../res/setup/5-docker-click-to-open.png)
 
-Open `http://localhost:<PORT>` in your browser. The Web UI will open - Agent Zero is ready for configuration!
+Open `http://localhost:<PORT>` in your browser. The Web UI will open - Agent ZERO V 2.2 is ready for configuration!
 
 ![docker ui](../res/setup/6-docker-a0-running-new.png)
 
@@ -213,25 +213,25 @@ Open `http://localhost:<PORT>` in your browser. The Web UI will open - Agent Zer
 > You can also access the Web UI by clicking the port link directly under the container ID in Docker Desktop.
 
 > [!NOTE]
-> After starting the container, you'll find all Agent Zero files in your chosen directory. You can access and edit these files directly on your machine, and the changes will be immediately reflected in the running container.
+> After starting the container, you'll find all Agent ZERO V 2.2 files in your chosen directory. You can access and edit these files directly on your machine, and the changes will be immediately reflected in the running container.
 
-**Running A0 using Terminal?**
+**Running Nuvho using Terminal?**
 
 ```bash
-docker run -p 0:80 -v /path/to/your/work_dir:/a0/usr agent0ai/agent-zero
+docker run -p 0:80 -v /path/to/your/work_dir:/a0/usr agent0ai/agent-zero-x
 ```
 
 - Replace `0` with a fixed port if you prefer (e.g., `50080:80`)
 
 ---
 
-## Step 3: Configure Agent Zero
+## Step 3: Configure Agent ZERO V 2.2
 
-The UI will show a warning banner "Missing LLM API Key for current settings". Click on `Add your API key` to enter Settings and start configuring A0.
+The UI will show a warning banner "Missing LLM API Key for current settings". Click on `Add your API key` to enter Settings and start configuring Nuvho.
 
 ### Settings Configuration
 
-Agent Zero provides a comprehensive settings interface to customize various aspects of its functionality. Access the settings by clicking the "Settings" button with a gear icon in the sidebar.
+Agent ZERO V 2.2 provides a comprehensive settings interface to customize various aspects of its functionality. Access the settings by clicking the "Settings" button with a gear icon in the sidebar.
 
 ### Agent Configuration
 
@@ -280,7 +280,7 @@ Use `claude-sonnet-4-5` for Anthropic, but use `anthropic/claude-sonnet-4-5` for
 - **Model Name:** Select the specific embedding model (e.g., text-embedding-3-small)
 
 > [!NOTE]
-> Agent Zero uses a local embedding model by default (runs on CPU), but you can switch to OpenAI embeddings like `text-embedding-3-small` or `text-embedding-3-large` if preferred.
+> Agent ZERO V 2.2 uses a local embedding model by default (runs on CPU), but you can switch to OpenAI embeddings like `text-embedding-3-small` or `text-embedding-3-large` if preferred.
 
 ### Speech to Text Options
 
@@ -293,13 +293,13 @@ Use `claude-sonnet-4-5` for Anthropic, but use `anthropic/claude-sonnet-4-5` for
 Configure API keys for various service providers directly within the Web UI. Click `Save` to confirm your settings.
 
 > [!NOTE]
-> **OpenAI API vs Plus subscription:** A ChatGPT Plus subscription does not include API credits. You must provide a separate API key for OpenAI usage in Agent Zero.
+> **OpenAI API vs Plus subscription:** A ChatGPT Plus subscription does not include API credits. You must provide a separate API key for OpenAI usage in Agent ZERO V 2.2.
 
 > [!TIP]
 > For OpenAI-compatible providers (e.g., custom gateways or Z.AI/GLM), add the API key under **External Services → Other OpenAI-compatible API keys**, then select **OpenAI Compatible** as the provider in model settings.
 
 > [!CAUTION]
-> **GitHub Copilot Provider:** When using the GitHub Copilot provider, after selecting the model and entering your first prompt, the OAuth login procedure will begin. You'll find the authentication code and link in the output logs. Complete the authentication process by following the provided link and entering the code, then you may continue using Agent Zero.
+> **GitHub Copilot Provider:** When using the GitHub Copilot provider, after selecting the model and entering your first prompt, the OAuth login procedure will begin. You'll find the authentication code and link in the output logs. Complete the authentication process by following the provided link and entering the code, then you may continue using Agent ZERO V 2.2.
 
 ### Authentication
 
@@ -326,14 +326,14 @@ Learn more about Remote Function Calls in the [Development Setup guide](dev-setu
 
 ## Choosing Your LLMs
 
-The Settings page is the control center for selecting the Large Language Models (LLMs) that power Agent Zero. You can choose different LLMs for different roles:
+The Settings page is the control center for selecting the Large Language Models (LLMs) that power Agent ZERO V 2.2. You can choose different LLMs for different roles:
 
 | LLM Role | Description |
 | --- | --- |
 | `chat_llm` | This is the primary LLM used for conversations and generating responses. |
 | `utility_llm` | This LLM handles internal tasks like summarizing messages, managing memory, and processing internal prompts. Using a smaller, less expensive model here can improve efficiency. |
 | `browser_llm` | This LLM powers the browser agent for web navigation and interaction tasks. Vision support is recommended for better page understanding. |
-| `embedding_llm` | The embedding model shipped with A0 runs on CPU and is responsible for generating embeddings used for memory retrieval and knowledge base lookups. Changing the `embedding_llm` will re-index all of A0's memory. |
+| `embedding_llm` | The embedding model shipped with Nuvho runs on CPU and is responsible for generating embeddings used for memory retrieval and knowledge base lookups. Changing the `embedding_llm` will re-index all of Nuvho's memory. |
 
 **How to Change:**
 
@@ -436,7 +436,7 @@ ollama pull <model-name>
 
 Replace `<model-name>` with the name of the model you want to use. For example: `ollama pull mistral-large`
 
-### Configuring Ollama in Agent Zero
+### Configuring Ollama in Agent ZERO V 2.2
 
 1. Once you've downloaded your model(s), select it in the Settings page of the GUI.
 2. Within the Chat model, Utility model, or Embedding model section, choose **Ollama** as provider.
@@ -447,7 +447,7 @@ Replace `<model-name>` with the name of the model you want to use. For example: 
 ![ollama](../res/setup/settings/4-local-models.png)
 
 > [!NOTE]
-> If Agent Zero runs in Docker and Ollama runs on the host, ensure port **11434** is reachable from the container. If both services are in the same Docker network, you can use `http://<container_name>:11434` instead of `host.docker.internal`.
+> If Agent ZERO V 2.2 runs in Docker and Ollama runs on the host, ensure port **11434** is reachable from the container. If both services are in the same Docker network, you can use `http://<container_name>:11434` instead of `host.docker.internal`.
 
 ### Managing Downloaded Models
 
@@ -468,15 +468,15 @@ ollama rm <model-name>
 
 ---
 
-## How to Update Agent Zero
+## How to Update Agent ZERO V 2.2
 
 > [!NOTE]
-> Since v0.9, Agent Zero includes a Backup & Restore workflow in the Settings UI. This is the **safest** way to upgrade Docker instances.
+> Since v0.9, Agent ZERO V 2.2 includes a Backup & Restore workflow in the Settings UI. This is the **safest** way to upgrade Docker instances.
 
 ### Recommended Update Process (Docker)
 
 1. **Keep the old container running** and note its port.
-2. **Pull the new image** (`agent0ai/agent-zero:latest`).
+2. **Pull the new image** (`agent0ai/agent-zero-x:latest`).
 3. **Start a new container** on a different host port.
 4. In the **old** instance, open **Settings → Backup & Restore** and create a backup.
 5. In the **new** instance, restore that backup from the same panel.
@@ -486,19 +486,19 @@ ollama rm <model-name>
 
 ---
 
-## Using Agent Zero on Your Mobile Device
+## Using Agent ZERO V 2.2 on Your Mobile Device
 
-Agent Zero can be accessed from mobile devices and other computers using the built-in **Tunnel feature**.
+Agent ZERO V 2.2 can be accessed from mobile devices and other computers using the built-in **Tunnel feature**.
 
 ### Recommended: Using Tunnel (Remote Access)
 
-The Tunnel feature allows secure access to your Agent Zero instance from anywhere:
+The Tunnel feature allows secure access to your Agent ZERO V 2.2 instance from anywhere:
 
 1. Open Settings in the Web UI
 2. Navigate to the **External Services** tab
 3. Click on **Flare Tunnel** in the navigation menu
 4. Click **Create Tunnel** to generate a secure HTTPS URL
-5. Share this URL to access Agent Zero from any device
+5. Share this URL to access Agent ZERO V 2.2 from any device
 
 > [!IMPORTANT]
 > **Security:** Always set a username and password in Settings → Authentication before creating a tunnel to secure your instance on the internet.
@@ -516,37 +516,37 @@ If you prefer to keep access limited to your local network:
 > [!TIP]
 > Find your computer's IP address with `ipconfig` (Windows) or `ifconfig`/`ip addr` (macOS/Linux). It's usually in the format `192.168.x.x` or `10.0.x.x`.
 
-For developers or users who need to run Agent Zero directly on their system, see the [In-Depth Guide for Full Binaries Installation](dev-setup.md).
+For developers or users who need to run Agent ZERO V 2.2 directly on their system, see the [In-Depth Guide for Full Binaries Installation](dev-setup.md).
 
 ---
 
 ## Advanced: Automated Configuration via Environment Variables
 
-Agent Zero settings can be automatically configured using environment variables with the `A0_SET_` prefix in your `.env` file. This enables automated deployments without manual configuration.
+Agent ZERO V 2.2 settings can be automatically configured using environment variables with the `NUVHO_SET_` prefix in your `.env` file. This enables automated deployments without manual configuration.
 
 **Usage:**
 
 Add variables to your `.env` file in the format:
 
 ```env
-A0_SET_{setting_name}={value}
+NUVHO_SET_{setting_name}={value}
 ```
 
 **Examples:**
 
 ```env
 # Model configuration
-A0_SET_chat_model_provider=anthropic
-A0_SET_chat_model_name=claude-3-5-sonnet-20241022
-A0_SET_chat_model_ctx_length=200000
+NUVHO_SET_chat_model_provider=anthropic
+NUVHO_SET_chat_model_name=claude-3-5-sonnet-20241022
+NUVHO_SET_chat_model_ctx_length=200000
 
 # Memory settings
-A0_SET_memory_recall_enabled=true
-A0_SET_memory_recall_interval=5
+NUVHO_SET_memory_recall_enabled=true
+NUVHO_SET_memory_recall_interval=5
 
 # Agent configuration
-A0_SET_agent_profile=custom
-A0_SET_agent_memory_subdir=production
+NUVHO_SET_agent_profile=custom
+NUVHO_SET_agent_memory_subdir=production
 ```
 
 **Docker usage:**
@@ -555,9 +555,9 @@ When running Docker, you can pass these as environment variables:
 
 ```bash
 docker run -p 50080:80 \
-  -e A0_SET_chat_model_provider=anthropic \
-  -e A0_SET_chat_model_name=claude-3-5-sonnet-20241022 \
-  agent0ai/agent-zero
+  -e NUVHO_SET_chat_model_provider=anthropic \
+  -e NUVHO_SET_chat_model_name=claude-3-5-sonnet-20241022 \
+  agent0ai/agent-zero-x
 ```
 
 **Notes:**
@@ -570,11 +570,11 @@ docker run -p 50080:80 \
 
 ### Manual Migration (Legacy or Non-Docker)
 
-If you are migrating from older, non-Docker setups, A0 handles the migration of legacy folders and files automatically at runtime. The right place to save your files and directories is `a0/usr`.
+If you are migrating from older, non-Docker setups, Nuvho handles the migration of legacy folders and files automatically at runtime. The right place to save your files and directories is `a0/usr`.
 
 ## Conclusion
 
-After following the instructions for your specific operating system, you should have Agent Zero successfully installed and running. You can now start exploring the framework's capabilities and experimenting with creating your own intelligent agents.
+After following the instructions for your specific operating system, you should have Agent ZERO V 2.2 successfully installed and running. You can now start exploring the framework's capabilities and experimenting with creating your own intelligent agents.
 
 **Next Steps:**
 
@@ -582,4 +582,4 @@ After following the instructions for your specific operating system, you should 
 - For development setup and extensions, see the [Development Setup Guide](dev-setup.md)
 - For remote access via tunnel, see [Remote Access via Tunneling](../guides/usage.md#remote-access-via-tunneling)
 
-If you encounter any issues during the installation process, please consult the [Troubleshooting section](../guides/troubleshooting.md) of this documentation or refer to the Agent Zero [Skool](https://www.skool.com/agent-zero) or [Discord](https://discord.gg/B8KZKNsPpj) community for assistance.
+If you encounter any issues during the installation process, please consult the [Troubleshooting section](../guides/troubleshooting.md) of this documentation or refer to the Agent ZERO V 2.2 [Skool](https://www.skool.com/agent-zero-x) or [Discord](https://discord.gg/B8KZKNsPpj) community for assistance.

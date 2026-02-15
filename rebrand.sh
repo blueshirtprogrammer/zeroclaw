@@ -1,11 +1,11 @@
 #!/bin/bash
-# Rebranding script for Nuvho AI OS
-# Run this to transform Agent Zero into Nuvho AI OS
+# Rebranding script for Agent ZERO V 2.2
+# Run this to transform Agent ZERO V 2.2 into Agent ZERO V 2.2
 
-OLD_NAME="Agent Zero"
-NEW_NAME="Nuvho AI OS"
-OLD_NAME_LOWER="agent-zero"
-NEW_NAME_LOWER="nuvho-ai-os"
+OLD_NAME="Agent ZERO V 2.2"
+NEW_NAME="Agent ZERO V 2.2"
+OLD_NAME_LOWER="agent-zero-x"
+NEW_NAME_LOWER="nuvho-agent-zero-x"
 
 echo "Rebranding $OLD_NAME to $NEW_NAME..."
 

@@ -1,0 +1,12 @@
+# Agent ZERO V 2.2 Dockerfile
+# A strategic development alliance: CLAW + Agent Zero Original + Link Technologies AI OS
+
+FROM agent0ai/agent-zero:latest
+
+# Set custom brand name
+ENV A0_BRAND_NAME="Agent ZERO V 2.2"
+ENV A0_INACTIVITY_TIMEOUT=3600
+
+EXPOSE 80 22 9000-9009
+
+CMD ["/exe/initialize.sh", "main"]

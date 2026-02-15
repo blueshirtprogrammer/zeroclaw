@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# install playwright - moved to install A0
+# install playwright - moved to install Nuvho
 # bash /ins/install_playwright.sh "$@"
 
 # searxng - moved to base image

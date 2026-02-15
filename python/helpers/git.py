@@ -98,12 +98,12 @@ def clone_repo(url: str, dest: str, token: str | None = None):
     return Repo(dest)
 
 
-# Files to ignore when checking dirty status (A0 project metadata)
-A0_IGNORE_PATTERNS = {".a0proj", ".a0proj/"}
+# Files to ignore when checking dirty status (Nuvho project metadata)
+NUVHO_IGNORE_PATTERNS = {".a0proj", ".a0proj/"}
 
 
 def get_repo_status(repo_path: str) -> dict:
-    """Get Git repository status, ignoring A0 project metadata files."""
+    """Get Git repository status, ignoring Nuvho project metadata files."""
     try:
         repo = Repo(repo_path)
         if repo.bare:
@@ -123,11 +123,11 @@ def get_repo_status(repo_path: str) -> dict:
         except Exception:
             current_branch = "unknown"
         
-        # Check dirty status, excluding A0 metadata
+        # Check dirty status, excluding Nuvho metadata
         def is_a0_file(path: str) -> bool:
             return path.startswith(".a0proj") or path == ".a0proj"
         
-        # Filter out A0 files from diff and untracked
+        # Filter out Nuvho files from diff and untracked
         changed_files = [d.a_path for d in repo.index.diff(None)] + [d.a_path for d in repo.index.diff("HEAD")]
         untracked = repo.untracked_files
         

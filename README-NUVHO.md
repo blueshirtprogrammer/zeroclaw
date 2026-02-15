@@ -1,10 +1,10 @@
-# Nuvho AI OS - Agent Zero Fork
+# Agent ZERO V 2.2 - Agent ZERO V 2.2 Fork
 
-A forked and rebranded version of [Agent Zero](https://github.com/agent0ai/agent-zero) for the Nuvho ecosystem.
+A forked and rebranded version of [Agent ZERO V 2.2](https://github.com/agent0ai/agent-zero-x) for the Nuvho ecosystem.
 
 ## What's Changed
 
-- Rebranded to Nuvho AI OS
+- Rebranded to Agent ZERO V 2.2
 - Custom UI theming (see `webui/`)
 - Pre-configured for Nuvho integration
 - Additional skills for your use cases
@@ -13,8 +13,8 @@ A forked and rebranded version of [Agent Zero](https://github.com/agent0ai/agent
 
 ### Local
 ```bash
-docker pull nuvho/ai-os
-docker run -p 50001:80 nuvho/ai-os
+docker pull nuvho/agent-zero-x
+docker run -p 50001:80 nuvho/agent-zero-x
 ```
 
 ### Cloud (Render)
@@ -25,7 +25,7 @@ docker run -p 50001:80 nuvho/ai-os
 
 ## Credits
 
-Original: [Agent Zero](https://github.com/agent0ai/agent-zero) by Jan Tomasek
+Original: [Agent ZERO V 2.2](https://github.com/agent0ai/agent-zero-x) by Jan Tomasek
 
 ## License
 

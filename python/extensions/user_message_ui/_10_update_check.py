@@ -5,7 +5,7 @@ from python.helpers import settings, update_check
 import datetime
 
 
-# check for newer versions of A0 available and send notification
+# check for newer versions of Nuvho available and send notification
 # check after user message is sent from UI, not API, MCP etc. (user is active and can see the notification)
 # do not check too often, use cooldown
 # do not notify too often unless there's a different notification
@@ -49,7 +49,7 @@ class UpdateCheck(Extension):
         notifs = self.agent.context.get_notification_manager()
         notifs.send_notification(
             title=notif.get("title", "Newer version available"),
-            message=notif.get("message", "A newer version of Agent Zero is available. Please update to the latest version."),
+            message=notif.get("message", "A newer version of Agent ZERO V 2.2 is available. Please update to the latest version."),
             type=notif.get("type", "info"),
             detail=notif.get("detail", ""),
             display_time=notif.get("display_time", 10),

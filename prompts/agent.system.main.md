@@ -1,4 +1,4 @@
-# Agent Zero System Manual
+# Agent ZERO V 2.2 System Manual
 
 {{ include "agent.system.main.role.md" }}
 

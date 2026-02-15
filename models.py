@@ -309,7 +309,7 @@ class LiteLLMChatWrapper(SimpleChatModel):
     ):
         model_value = f"{provider}/{model}"
         super().__init__(model_name=model_value, provider=provider, kwargs=kwargs)  # type: ignore
-        # Set A0 model config as instance attribute after parent init
+        # Set Nuvho model config as instance attribute after parent init
         self.a0_model_conf = model_config
 
     @property
@@ -485,7 +485,7 @@ class LiteLLMChatWrapper(SimpleChatModel):
             self.a0_model_conf, str(msgs_conv), rate_limiter_callback
         )
 
-        # Prepare call kwargs and retry config (strip A0-only params before calling LiteLLM)
+        # Prepare call kwargs and retry config (strip Nuvho-only params before calling LiteLLM)
         call_kwargs: dict[str, Any] = {**self.kwargs, **kwargs}
         max_retries: int = int(call_kwargs.pop("a0_retry_attempts", 2))
         retry_delay_s: float = float(call_kwargs.pop("a0_retry_delay_seconds", 1.5))
@@ -832,8 +832,8 @@ def _adjust_call_args(provider_name: str, model_name: str, kwargs: dict):
     # for openrouter add app reference
     if provider_name == "openrouter":
         kwargs["extra_headers"] = {
-            "HTTP-Referer": "https://agent-zero.ai",
-            "X-Title": "Agent Zero",
+            "HTTP-Referer": "https://agent-zero-x.ai",
+            "X-Title": "Agent ZERO V 2.2",
         }
 
     # remap other to openai for litellm

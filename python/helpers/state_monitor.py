@@ -24,7 +24,7 @@ ConnectionIdentity = tuple[str, str]  # (namespace, sid)
 
 
 def _ws_debug_enabled() -> bool:
-    value = os.getenv("A0_WS_DEBUG", "").strip().lower()
+    value = os.getenv("NUVHO_WS_DEBUG", "").strip().lower()
     return value in {"1", "true", "yes", "on"}
 
 
